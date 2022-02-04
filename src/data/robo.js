@@ -1,51 +1,51 @@
 export const robots = [
     {
         id:1,
-        name: "Name 1",
+        name: "Bailey",
         userName: "UserName 1",
-        email: "user1@gmail.com"
+        email: "Bailey@gmail.com"
     },
     {
         id:2,
-        name: "Name 2",
+        name: "Cunningham",
         userName: "UserName 2",
-        email: "user2@gmail.com"
+        email: "Cunningham@gmail.com"
     },
     {
         id:3,
-        name: "Name 3",
+        name: "Lee",
         userName: "UserName 3",
-        email: "user3@gmail.com"
+        email: "Lee@gmail.com"
     },
     {
         id:4,
-        name: "Name 4",
+        name: "Harrison",
         userName: "UserName 4",
-        email: "user4@gmail.com"
+        email: "Harrison@gmail.com"
     },
     {
 
         id:5,
-        name: "Name 5",
+        name: "Douglas",
         userName: "UserName 5",
-        email: "user5@gmail.com"
+        email: "Douglas@gmail.com"
     },
     {
         id:6,
-        name: "Name 6",
+        name: "Stephen",
         userName: "UserName 6",
-        email: "user6@gmail.com"
+        email: "Stephen@gmail.com"
     },
     {
         id:7,
-        name: "Name 7",
+        name: "Ronald",
         userName: "UserName 7",
-        email: "user7@gmail.com"
+        email: "Ronald@gmail.com"
     },
     {
         id:8,
-        name: "Name 8",
+        name: "Margaret",
         userName: "UserName 8",
-        email: "user8@gmail.com"
+        email: "Margaret@gmail.com"
     }
 ]
