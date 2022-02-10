@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useEffect, useState } from "react";
 import CardList from "../../components/CardList/CardList";
 import SearchBox from "../../components/SearchBox/SearchBox";
 import './App.css'
@@ -7,43 +7,40 @@ import ErrorBoundry from "../../components/ErrorBoundary/ErrorBoundry";
 
 //https://jsonplaceholder.typicode.com/users
 
-class App extends Component {
-    constructor(){
-        super()
-        this.state = {
-            robots: [],
-            searchFiled: ''
-        }
+function App() {
+    
+    const [robots, setRobots] = useState([]);
+    const [searchfiled, setSearchfield] = useState('')
+    
+    const onSearchChange = async event=>{
+        setSearchfield(event.target.value);
     }
 
-    componentDidMount(){
+    useEffect(()=>{
         fetch('https://jsonplaceholder.typicode.com/users')
-        .then(response => response.json())
-        .then(users=>this.setState({robots: users }))
-    }
+            .then(response => response.json())
+            .then(users=>{setRobots(users)})
+    }, []);
+    
+    const robotFiltered = robots.filter(robot =>{
+        return robot.name.toLowerCase().includes(searchfiled.toLowerCase())
+    });
 
-    onSearchChange=(event)=>{
-        this.setState({ searchFiled: event.target.value })
-    }
+    return (
+        <div className="tc">
+            <h1 className="f1">RoboFriends</h1>
+            <SearchBox searchChange={onSearchChange}/>
 
-    render(){
-        const {robots, searchFiled} = this.state;
-        const robotFiltered = robots.filter(robots=>
-            robots.name.toLowerCase().includes(searchFiled.toLowerCase()));
+            <Scroll>    
+                <ErrorBoundry>
+                    <CardList robots={robotFiltered}/>  
+                </ErrorBoundry>
+            </Scroll>
+      </div>
+    );
 
-        return (
-            <div className="tc">
-                <h1 className="f1">RoboFriends</h1>
-                <SearchBox searchChange={this.onSearchChange}/>
 
-                <Scroll>    
-                    <ErrorBoundry>
-                        <CardList robots={robotFiltered}/>  
-                    </ErrorBoundry>
-                </Scroll>
-          </div>
-        );
-    }
+   
     
 }
 
