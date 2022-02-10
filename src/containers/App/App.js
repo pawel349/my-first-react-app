@@ -3,6 +3,7 @@ import CardList from "../../components/CardList/CardList";
 import SearchBox from "../../components/SearchBox/SearchBox";
 import './App.css'
 import Scroll from '../../components/Scroll/Scroll'
+import ErrorBoundry from "../../components/ErrorBoundary/ErrorBoundry";
 
 //https://jsonplaceholder.typicode.com/users
 
@@ -30,15 +31,15 @@ class App extends Component {
         const robotFiltered = robots.filter(robots=>
             robots.name.toLowerCase().includes(searchFiled.toLowerCase()));
 
-        return !robotFiltered.length ? 
-         <h1>Empty List</h1> :
-        (
+        return (
             <div className="tc">
                 <h1 className="f1">RoboFriends</h1>
                 <SearchBox searchChange={this.onSearchChange}/>
 
-                <Scroll>
-                    <CardList robots={robotFiltered}/>  
+                <Scroll>    
+                    <ErrorBoundry>
+                        <CardList robots={robotFiltered}/>  
+                    </ErrorBoundry>
                 </Scroll>
           </div>
         );
