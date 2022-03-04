@@ -11,7 +11,8 @@ function App() {
     
     const [robots, setRobots] = useState([]);
     const [searchfiled, setSearchfield] = useState('')
-    
+    const [count, setCount] = useState(0,)
+
     const onSearchChange = async event=>{
         setSearchfield(event.target.value);
     }
@@ -22,6 +23,7 @@ function App() {
             .then(users=>{setRobots(users)})
     }, []);
     
+    
     const robotFiltered = robots.filter(robot =>{
         return robot.name.toLowerCase().includes(searchfiled.toLowerCase())
     });
@@ -29,8 +31,9 @@ function App() {
     return (
         <div className="tc">
             <h1 className="f1">RoboFriends</h1>
-            <SearchBox searchChange={onSearchChange}/>
+            <button onClick={()=>setCount(count+1)}>Click Me!</button>
 
+            <SearchBox searchChange={onSearchChange}/>
             <Scroll>    
                 <ErrorBoundry>
                     <CardList robots={robotFiltered}/>  
